@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  SPDX-FileCopyrightText: 2026 Massimo Antonini
+  SPDX-License-Identifier: MPL-2.0
+
+  Builds the samples with Java code together; each one also builds alone from its directory.
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>io.github.mosaikit.samples</groupId>
+    <artifactId>samples</artifactId>
+    <version>0.1.0</version>
+    <packaging>pom</packaging>
+    <name>Mosaikit samples</name>
+    <modules>
+        <module>notes</module>
+        <module>activities</module>
+        <module>estimates</module>
+    </modules>
+</project>

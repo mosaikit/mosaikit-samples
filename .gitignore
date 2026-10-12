@@ -1,0 +1,11 @@
+target/
+lib/
+dist/
+node_modules/
+.mosaikit-bench/
+test-results/
+playwright-report/
+packages/
+.mosaikit/
+# Until the first release of Mosaikit the dependencies on it float on its snapshots.
+package-lock.json

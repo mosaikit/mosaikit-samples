@@ -1,0 +1,37 @@
+{
+  "name": "mosaikit-samples",
+  "private": true,
+  "description": "Sample plugins of Mosaikit: the examples of the plugin development guide.",
+  "license": "MPL-2.0",
+  "author": "Massimo Antonini",
+  "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
+  "workspaces": [
+    "react",
+    "vue"
+  ],
+  "scripts": {
+    "build": "npm run build --workspaces",
+    "typecheck": "npm run typecheck --workspaces",
+    "test:unit": "vitest run",
+    "dev": "mosaikit-bench hello notes activities estimates react vue todo theme",
+    "test": "playwright test",
+    "package": "node scripts/package.mjs",
+    "use-mosaikit": "node scripts/use-mosaikit.mjs"
+  },
+  "devDependencies": {
+    "@mosaikit/testing": "0.1.0-SNAPSHOT",
+    "@playwright/test": "^1.63.0",
+    "typescript": "~6.0.3",
+    "vitest": "^5.0.2"
+  },
+  "allowScripts": {
+    "@embedded-postgres/windows-x64": true,
+    "@embedded-postgres/linux-x64": true,
+    "@embedded-postgres/linux-arm64": true,
+    "@embedded-postgres/darwin-x64": true,
+    "@embedded-postgres/darwin-arm64": true
+  }
+}
