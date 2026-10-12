@@ -1,8 +1,8 @@
 # SPDX-FileCopyrightText: 2026 Massimo Antonini
 # SPDX-License-Identifier: MPL-2.0
 #
-# Builds every sample and tests them together on the bench of @mosaikit/testing, against the
-# latest snapshot of Mosaikit (ADR-0035 of mosaikit/mosaikit). Every night too, so that a change
+# Builds and tests every sample, each a project of its own (mvn verify), on the bench of
+# @mosaikit/testing against the latest snapshot of Mosaikit (ADR-0035 of mosaikit/mosaikit). Every night too, so that a change
 # of the kernel that breaks a sample shows here the next morning. A tag vX.Y.Z publishes the
 # packages in a GitHub release.
 name: Samples
@@ -34,32 +34,36 @@ jobs:
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
           node-version: '24'
-      - name: Latest snapshot of Mosaikit
-        run: node scripts/use-mosaikit.mjs latest
-      - name: Plugin API
+      - name: Plugin API and parent of plugins
         uses: mosaikit/.github/actions/kernel-api@main
         with:
           version: 0.1.0-SNAPSHOT
-      - run: npm install --no-audit --no-fund
-      - run: mvn --batch-mode --no-transfer-progress package
-      - run: npm run build
-      - run: npm run typecheck
-      - run: npm run test:unit
-      - run: npx playwright install --with-deps chromium
-      - name: Tests on the bench
-        run: npm test
-      - run: npm run package
+      - run: npx --yes playwright@1 install --with-deps chromium
+      # Every sample is a project of its own; some tests install a neighbour (estimates needs
+      # activities, react and vue each other, teams and chat need todo), so all are packaged first.
+      - name: Package every sample
+        run: for sample in */pom.xml; do (cd "$(dirname "$sample")" && mvn -B -ntp package -DskipTests) || exit 1; done
+      - name: Verify every sample
+        run: |
+          failed=()
+          for sample in */pom.xml; do
+            name="$(dirname "$sample")"
+            echo "::group::$name"
+            (cd "$name" && mvn -B -ntp verify) || failed+=("$name")
+            echo "::endgroup::"
+          done
+          if (( ${#failed[@]} )); then echo "::error::failed: ${failed[*]}"; exit 1; fi
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         if: always()
         with:
           name: samples
           path: |
-            packages/
-            test-results/
-            .mosaikit-bench/test/installation.log
+            */target/*.zip
+            */test-results/
+            */.mosaikit-bench/installation.log
           retention-days: 7
       - name: GitHub release
         if: startsWith(github.ref, 'refs/tags/v')
         env:
           GH_TOKEN: ${{ github.token }}
-        run: gh release create "$GITHUB_REF_NAME" packages/*.zip --verify-tag --generate-notes
+        run: gh release create "$GITHUB_REF_NAME" */target/*.zip --verify-tag --generate-notes

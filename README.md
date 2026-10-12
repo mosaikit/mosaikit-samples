@@ -2,8 +2,10 @@
 
 The sample plugins of [Mosaikit](https://github.com/mosaikit/mosaikit): the examples of its
 [plugin development guide](https://github.com/mosaikit/mosaikit/blob/main/docs/development/plugin-development.md).
-Each directory is a plugin, built and tested only against what Mosaikit publishes, exactly as a
-plugin of a third party (ADR-0035).
+Each directory is a project of its own, built and tested only against what Mosaikit publishes, as
+a plugin of a third party is (ADR-0035): its `pom.xml` names the parent of Mosaikit plugins,
+`io.github.mosaikit:mosaikit-plugin-parent`, and its `package.json` the test bench,
+`@mosaikit/testing`.
 
 | Sample | What it shows |
 |---|---|
@@ -15,31 +17,27 @@ plugin of a third party (ADR-0035).
 | `vue` | An extension written with Vue: a swatch in `palette.preview` that follows the selection of the React app. |
 | `todo` | An app without a backend, whose items are documents that the kernel keeps for each organization. |
 | `theme` | A theme plugin: the Green theme, offered in the settings of each person. |
+| `teams` | The app Teams: channels, posts, threads, mentions, reactions, and tabs that other plugins add. |
+| `chat` | The app Chat: chats one to one and in groups, with cards of other plugins. |
 
-## Build and test
+## Build and test a sample
 
-Java 25, Maven and Node.js 24. Until the first release of Mosaikit the samples use its latest
-snapshot:
-
-```bash
-npm run use-mosaikit latest   # the dependencies on Mosaikit (once, and to move to a newer snapshot)
-npm install
-mvn package                   # notes, activities, estimates
-npm run build                 # react, vue
-npm test                      # every sample on one bench: about 40 seconds
-npm run dev                   # Mosaikit with every sample, until Ctrl+C
-```
-
-`npm test` starts Mosaikit with all the samples on an embedded PostgreSQL, with an organization
-and two people (`@mosaikit/testing`), and runs `*/tests/*.spec.ts`. To try the samples against a
-change of Mosaikit that is not published yet:
+Java 25, Maven and Node.js 24. From the directory of the sample:
 
 ```bash
-npm run use-mosaikit -- --local ../mosaikit   # packs the SDK of a checkout into .mosaikit/
-MOSAIKIT_INSTALLATION=../mosaikit/target/dist/mosaikit npm test
+mvn package    # target/<name>-<version>.zip, the package to install
+mvn verify     # also its tests, on a Mosaikit installation started for them
+npm test       # the same tests, after mvn package
+npm run dev    # Mosaikit with the sample, until Ctrl+C
 ```
 
-`npm run package` writes the packages of every sample to `packages/`.
+Some tests install a neighbour, which must be packaged first: `estimates` needs `activities`,
+`react` and `vue` need each other, `teams` and `chat` need `todo`.
+
+Until the first release of Mosaikit, the samples follow its latest snapshot: the plugin API and
+the parent POM come from a build of Mosaikit (`mvn install` in its repository), the npm packages
+from its pre-release `snapshot`. To test against a build of Mosaikit, set
+`MOSAIKIT_INSTALLATION=<mosaikit>/target/dist/mosaikit`.
 
 ## Licence
 

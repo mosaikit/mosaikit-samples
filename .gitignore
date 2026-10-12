@@ -5,7 +5,5 @@ node_modules/
 .mosaikit-bench/
 test-results/
 playwright-report/
-packages/
-.mosaikit/
-# Until the first release of Mosaikit the dependencies on it float on its snapshots.
+# Until the first release of Mosaikit the dependencies on it follow its latest snapshot.
 package-lock.json

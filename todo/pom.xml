@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  SPDX-FileCopyrightText: 2026 Massimo Antonini
+  SPDX-License-Identifier: MPL-2.0
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>io.github.mosaikit</groupId>
+        <artifactId>mosaikit-plugin-parent</artifactId>
+        <version>0.1.0-SNAPSHOT</version>
+        <relativePath/>
+    </parent>
+    <groupId>io.github.mosaikit.samples</groupId>
+    <artifactId>sample-todo</artifactId>
+    <version>0.1.0</version>
+    <packaging>pom</packaging>
+    <name>To do (sample)</name>
+    <description>An app without a backend, whose items are documents that the kernel keeps for each organization.</description>
+</project>

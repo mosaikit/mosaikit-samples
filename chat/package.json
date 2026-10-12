@@ -1,0 +1,31 @@
+{
+  "name": "app-chat",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Chats one to one and in groups, with cards of plugins, without a backend.",
+  "license": "MPL-2.0",
+  "author": "Massimo Antonini",
+  "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "dev": "mosaikit-bench . ../todo",
+    "pretest": "playwright install chromium",
+    "test": "playwright test"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.13.0",
+    "@mosaikit/testing": "https://github.com/mosaikit/mosaikit/releases/download/snapshot/mosaikit-testing-latest.tgz",
+    "@playwright/test": "^1.63.0",
+    "@types/node": "^24.19.0",
+    "typescript": "~6.0.3"
+  },
+  "allowScripts": {
+    "@embedded-postgres/windows-x64": true,
+    "@embedded-postgres/linux-x64": true,
+    "@embedded-postgres/linux-arm64": true,
+    "@embedded-postgres/darwin-x64": true,
+    "@embedded-postgres/darwin-arm64": true
+  }
+}

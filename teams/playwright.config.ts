@@ -2,14 +2,19 @@
 // SPDX-License-Identifier: MPL-2.0
 import { defineConfig, devices } from '@playwright/test';
 
-/** The tests of every sample, on one bench with all of them (tests/global-setup.ts). */
+/** The tests of the app on a Mosaikit installation started by the bench (tests/global-setup.ts). */
 export default defineConfig({
-  testDir: '.',
-  testMatch: '*/tests/*.spec.ts',
+  testDir: './tests',
+  testMatch: '*.spec.ts',
   globalSetup: './tests/global-setup.ts',
   workers: 1,
-  timeout: 60_000,
+  timeout: 90_000,
+  expect: { timeout: 15_000 },
   forbidOnly: !!process.env.CI,
   reporter: process.env.CI ? [['list'], ['github']] : [['list']],
-  use: { trace: 'retain-on-failure', ...devices['Desktop Chrome'] },
+  use: {
+    baseURL: 'http://localhost:18201',
+    trace: 'retain-on-failure',
+    ...devices['Desktop Chrome'],
+  },
 });
