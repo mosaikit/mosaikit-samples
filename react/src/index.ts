@@ -1,6 +1,6 @@
 // SPDX-FileCopyrightText: 2026 Massimo Antonini
 // SPDX-License-Identifier: MPL-2.0
-import { definePlugin, stringAttribute, type PluginContext } from '@mosaikit/sdk';
+import { defineExtension, stringAttribute, type ExtensionContext } from '@mosaikit/sdk';
 import { createElement, useState, type ReactElement } from 'react';
 import { createRoot, type Root } from 'react-dom/client';
 
@@ -26,7 +26,7 @@ const STYLE = `
   .muted { color: var(--mk-muted); font-size: 13px; }
 `;
 
-function Palette({ context }: { readonly context: PluginContext }): ReactElement {
+function Palette({ context }: { readonly context: ExtensionContext }): ReactElement {
   const [picked, setPicked] = useState<string | undefined>(undefined);
   const previews = context
     .contributionsTo('palette.preview')
@@ -63,7 +63,7 @@ function Palette({ context }: { readonly context: PluginContext }): ReactElement
       ),
     ),
     previews.length === 0
-      ? createElement('p', { className: 'muted' }, 'No preview plugin is installed.')
+      ? createElement('p', { className: 'muted' }, 'No preview extension is installed.')
       : createElement(
           'div',
           { className: 'previews' },
@@ -72,7 +72,7 @@ function Palette({ context }: { readonly context: PluginContext }): ReactElement
   );
 }
 
-export default definePlugin({
+export default defineExtension({
   activate(context) {
     if (customElements.get('mk-sample-palette')) {
       return;

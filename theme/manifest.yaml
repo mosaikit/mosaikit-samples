@@ -3,7 +3,7 @@
 id: dev.mosaikit.sample.theme
 version: 0.1.0
 name: Green theme (sample)
-description: A theme plugin (MK-028) with the colors of a brand; what it leaves out comes from the default theme.
+description: A theme extension (MK-028) with the colors of a brand; what it leaves out comes from the default theme.
 kind: [theme]
 platform: '>=0.1 <1'
 theme:

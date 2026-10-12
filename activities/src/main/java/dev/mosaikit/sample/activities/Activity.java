@@ -12,7 +12,7 @@ import java.util.UUID;
 
 /** An activity of an organization. */
 @Entity
-@Table(name = "activity", schema = "p_sample_activities")
+@Table(name = "activity", schema = "ext_sample_activities")
 public class Activity {
 
     @Id

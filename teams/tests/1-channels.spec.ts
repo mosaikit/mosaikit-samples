@@ -15,7 +15,7 @@ async function personIn(browser: Browser, person: typeof MARIO): Promise<Page> {
   return page;
 }
 
-/** The posts of the open channel, in the plugin. */
+/** The posts of the open channel, in the extension. */
 const posts = (page: Page) => page.getByRole('list', { name: 'Posts' });
 
 test.describe.serial('MK-034 Channels with posts, threads, mentions and reactions', () => {
@@ -33,10 +33,10 @@ test.describe.serial('MK-034 Channels with posts, threads, mentions and reaction
     browser,
   }) => {
     await signIn(page, ADMIN);
-    await openApp(page, 'Plugins');
+    await openApp(page, 'Extensions');
     const row = page.locator('tbody tr').filter({ hasText: ID });
     await row.getByRole('button', { name: 'Install' }).click();
-    await expect(page.locator('mk-admin-plugins').getByRole('status')).toContainText(
+    await expect(page.locator('mk-admin-extensions').getByRole('status')).toContainText(
       `${ID} 0.1.0 is installed and active`,
     );
 

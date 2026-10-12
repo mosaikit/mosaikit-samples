@@ -3,8 +3,8 @@
 import { defineConfig } from 'vite';
 
 /**
- * One ES module with React inside: the shell imports it like any plugin frontend. The framework is
- * private to the plugin, so plugins can use different versions of it (MK-021).
+ * One ES module with React inside: the shell imports it like any extension frontend. The framework is
+ * private to the extension, so extensions can use different versions of it (MK-021).
  */
 export default defineConfig({
   define: { 'process.env.NODE_ENV': JSON.stringify('production') },

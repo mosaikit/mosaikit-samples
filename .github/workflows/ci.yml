@@ -34,7 +34,7 @@ jobs:
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
           node-version: '24'
-      - name: Plugin API and parent of plugins
+      - name: Extension API and parent of extensions
         uses: mosaikit/.github/actions/kernel-api@main
         with:
           version: 0.1.0-SNAPSHOT

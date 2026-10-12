@@ -14,9 +14,9 @@ export default async function globalSetup(): Promise<() => Promise<void>> {
   }
   const bench = await Bench.start({
     work: '.mosaikit-bench',
-    plugins: [...own],
+    extensions: [...own],
     // The packages are not signed by a publisher: their frontends run like verified ones.
-    settings: { 'mosaikit.plugins.unverified-frontends': 'module' },
+    settings: { 'mosaikit.extensions.unverified-frontends': 'module' },
   });
   bench.publish();
   return () => bench.stop();

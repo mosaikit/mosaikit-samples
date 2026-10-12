@@ -3,15 +3,15 @@
 
 /**
  * Teams (MK-034): the teams of the person, their channels and the posts of each channel, with
- * threads, mentions and reactions. A plugin without a backend (ADR-0033): the teams and their people
+ * threads, mentions and reactions. An extension without a backend (ADR-0033): the teams and their people
  * are those of the kernel (MK-032), the channels and posts are documents of the data API shared with
  * the team, so that only its people read them. A private channel is a group of the team, and its
  * posts are shared with that group only. Posts of others appear at once through the real-time
  * channel (MK-031); mentions reach the activity feed (MK-038).
  *
  * Every channel has the tabs Posts and Files, and the tabs that its people add from what other
- * plugins contribute to the point `channel.tab` (MK-035). The tabs of a channel are documents shared
- * like its posts; a tab whose plugin is missing, or turned off for the organization, is shown as
+ * extensions contribute to the point `channel.tab` (MK-035). The tabs of a channel are documents shared
+ * like its posts; a tab whose extension is missing, or turned off for the organization, is shown as
  * unavailable.
  */
 
@@ -60,8 +60,8 @@ const STYLE = `
   :focus-visible { outline: 2px solid var(--mk-focus); outline-offset: 2px; }
 `;
 
-/** @type {import('@mosaikit/sdk').MosaikitPlugin} */
-const plugin = {
+/** @type {import('@mosaikit/sdk').MosaikitExtension} */
+const extension = {
   activate(context) {
     if (customElements.get('mk-app-teams')) {
       return;
@@ -260,7 +260,7 @@ const plugin = {
         }
       }
 
-      /** The tabs that other plugins offer, as the shell gives them: only active, not turned off. */
+      /** The tabs that other extensions offer, as the shell gives them: only active, not turned off. */
       offered() {
         return context
           .contributionsTo('channel.tab')
@@ -434,10 +434,10 @@ const plugin = {
           return this.renderPanel();
         }
         const contribution = this.offered().find(
-          (offer) => offer.pluginId === saved.data.plugin && offer.id === saved.data.tab,
+          (offer) => offer.extensionId === saved.data.extension && offer.id === saved.data.tab,
         );
         if (!contribution) {
-          // Its plugin is not installed, or is turned off for the organization: the channel works on.
+          // Its extension is not installed, or is turned off for the organization: the channel works on.
           return h(
             'section',
             { class: 'unavailable', 'aria-label': `${saved.data.title} is unavailable` },
@@ -486,7 +486,7 @@ const plugin = {
                 void this.run(async () => {
                   const created = await this.tabData.create({
                     channel: this.channel,
-                    plugin: chosen.pluginId,
+                    extension: chosen.extensionId,
                     tab: chosen.id,
                     title,
                   });
@@ -949,4 +949,4 @@ const plugin = {
   },
 };
 
-export default plugin;
+export default extension;

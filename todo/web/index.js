@@ -4,11 +4,11 @@
 /**
  * Sample app without a backend (ADR-0031): its items are documents of the collection "items",
  * which the kernel keeps for the organization of the person, under row-level security. Nothing to
- * build, no Java, no schema: the plugin is active as soon as it is installed.
+ * build, no Java, no schema: the extension is active as soon as it is installed.
  */
 
-/** @type {import('@mosaikit/sdk').MosaikitPlugin} */
-const plugin = {
+/** @type {import('@mosaikit/sdk').MosaikitExtension} */
+const extension = {
   activate(context) {
     if (customElements.get('mk-sample-todo')) {
       return;
@@ -114,4 +114,4 @@ const plugin = {
   },
 };
 
-export default plugin;
+export default extension;

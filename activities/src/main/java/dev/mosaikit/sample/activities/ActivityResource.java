@@ -23,7 +23,7 @@ import java.util.List;
 import java.util.UUID;
 
 /** Activities of the organization of the request (MK-020). */
-@Path("/api/v1/p/sample-activities/activities")
+@Path("/api/v1/ext/sample-activities/activities")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 @Authenticated

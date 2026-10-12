@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: MPL-2.0
 import { describe, expect, it } from 'vitest';
 import { COLOURS, SELECTED as PUBLISHED } from '../../react/src/index.js';
-import plugin, { SELECTED, isColour } from '../src/index.js';
+import extension, { SELECTED, isColour } from '../src/index.js';
 
 describe('Swatch, the Vue sample (MK-021)', () => {
   it('follows the topic and the payload that the React palette publishes', () => {
@@ -19,7 +19,7 @@ describe('Swatch, the Vue sample (MK-021)', () => {
     expect(isColour({ name: 'Teal', value: 'url(javascript:alert(1))' })).toBe(false);
   });
 
-  it('is a plugin frontend', () => {
-    expect(typeof plugin.activate).toBe('function');
+  it('is an extension frontend', () => {
+    expect(typeof extension.activate).toBe('function');
   });
 });

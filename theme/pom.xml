@@ -9,7 +9,7 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>io.github.mosaikit</groupId>
-        <artifactId>mosaikit-plugin-parent</artifactId>
+        <artifactId>mosaikit-extension-parent</artifactId>
         <version>0.1.0-SNAPSHOT</version>
         <relativePath/>
     </parent>
@@ -18,5 +18,5 @@
     <version>0.1.0</version>
     <packaging>pom</packaging>
     <name>Green theme (sample)</name>
-    <description>A theme plugin: the Green theme, offered in the settings of each person.</description>
+    <description>A theme extension: the Green theme, offered in the settings of each person.</description>
 </project>

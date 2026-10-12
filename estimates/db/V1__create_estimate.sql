@@ -1,9 +1,9 @@
 -- SPDX-FileCopyrightText: 2026 Massimo Antonini
 -- SPDX-License-Identifier: MPL-2.0
 --
--- Schema p_sample_estimates (MK-020): the field that the extension adds to activities, in a table
+-- Schema ext_sample_estimates (MK-020): the field that the extension adds to activities, in a table
 -- of its own keyed by the identifier of the activity. No foreign key to the schema of the
--- Activities plugin: its activities are read through its data contract, the view activity_v1.
+-- Activities extension: its activities are read through its data contract, the view activity_v1.
 
 create table estimate (
     activity_id     uuid          primary key,

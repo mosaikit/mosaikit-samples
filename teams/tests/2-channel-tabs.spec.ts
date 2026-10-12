@@ -18,7 +18,7 @@ async function inTeam(browser: Browser, person: Person, team: string): Promise<P
 
 const tabs = (page: Page) => page.getByRole('tablist', { name: 'Tabs of General' });
 
-test.describe.serial('MK-035 Tabs of the channels added by plugins', () => {
+test.describe.serial('MK-035 Tabs of the channels added by extensions', () => {
   let team = '';
 
   test.beforeAll(async () => {
@@ -40,7 +40,7 @@ test.describe.serial('MK-035 Tabs of the channels added by plugins', () => {
     await api(MARIO, `/api/v1/teams/${team}`, { method: 'DELETE' });
   });
 
-  test('35.1 a member adds a tab of an installed plugin to a channel, and every member sees it', async ({
+  test('35.1 a member adds a tab of an installed extension to a channel, and every member sees it', async ({
     browser,
   }) => {
     const mario = await inTeam(browser, MARIO, team);
@@ -64,12 +64,12 @@ test.describe.serial('MK-035 Tabs of the channels added by plugins', () => {
     await expect(anna.getByRole('tabpanel').getByRole('heading', { name: 'To do' })).toBeVisible();
   });
 
-  test('35.2 a tab of a plugin turned off for the organization is unavailable, and the channel works on', async ({
+  test('35.2 a tab of an extension turned off for the organization is unavailable, and the channel works on', async ({
     browser,
   }) => {
-    const settings = (await api(ADMIN, APPS)).body as { pluginId: string; enabled: boolean }[];
+    const settings = (await api(ADMIN, APPS)).body as { extensionId: string; enabled: boolean }[];
     const off = settings.map((app) =>
-      app.pluginId === 'dev.mosaikit.sample.todo' ? { ...app, enabled: false } : app,
+      app.extensionId === 'dev.mosaikit.sample.todo' ? { ...app, enabled: false } : app,
     );
     expect((await api(ADMIN, APPS, { method: 'PUT', body: JSON.stringify(off) })).status).toBe(200);
 

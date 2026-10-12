@@ -36,10 +36,10 @@ test.describe.serial('MK-036 Chats one to one and in groups', () => {
     browser,
   }) => {
     await signIn(page, ADMIN);
-    await openApp(page, 'Plugins');
+    await openApp(page, 'Extensions');
     const row = page.locator('tbody tr').filter({ hasText: ID });
     await row.getByRole('button', { name: 'Install' }).click();
-    await expect(page.locator('mk-admin-plugins').getByRole('status')).toContainText(
+    await expect(page.locator('mk-admin-extensions').getByRole('status')).toContainText(
       `${ID} 0.1.0 is installed and active`,
     );
 
@@ -83,10 +83,10 @@ test.describe.serial('MK-036 Chats one to one and in groups', () => {
     expect(results.violations.map((violation) => violation.id)).toEqual([]);
   });
 
-  test('36.2 a card of a plugin shows its fields, and its action runs with the rights of who uses it', async ({
+  test('36.2 a card of an extension shows its fields, and its action runs with the rights of who uses it', async ({
     browser,
   }) => {
-    // A plugin publishes a card in the chat, as Anna's page would: a message of the collection.
+    // An extension publishes a card in the chat, as Anna's page would: a message of the collection.
     const published = await api(ANNA, `/api/v1/data/${ID}/messages?team=${chatId}`, {
       method: 'POST',
       body: JSON.stringify({

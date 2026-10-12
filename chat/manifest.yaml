@@ -3,7 +3,7 @@
 id: dev.mosaikit.app.chat
 version: 0.1.0
 name: Chat
-description: Chats one to one and in groups, with history, cards of plugins and indicators of typing and reading (MK-036).
+description: Chats one to one and in groups, with history, cards of extensions and indicators of typing and reading (MK-036).
 kind: [app]
 platform: '>=0.1 <1'
 frontend:

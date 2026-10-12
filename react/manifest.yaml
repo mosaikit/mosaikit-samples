@@ -5,7 +5,7 @@ version: 0.1.0
 name: Palette (React sample)
 description: >-
   Sample app written with React (MK-021): picks a colour, publishes it on the bus and shows the
-  previews that other plugins contribute, such as the Vue sample.
+  previews that other extensions contribute, such as the Vue sample.
 kind: [app]
 platform: '>=0.1 <1'
 frontend:

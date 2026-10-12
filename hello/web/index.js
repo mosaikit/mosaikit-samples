@@ -2,14 +2,14 @@
 // SPDX-License-Identifier: MPL-2.0
 
 /**
- * Sample plugin frontend. It is a plain ES module: any framework that produces custom elements
+ * Sample extension frontend. It is a plain ES module: any framework that produces custom elements
  * (Lit, React, Vue, Svelte, Angular) can be used instead.
  */
 
 const TOPIC = 'sample.hello.greeted';
 
-/** @type {import('@mosaikit/sdk').MosaikitPlugin} */
-const plugin = {
+/** @type {import('@mosaikit/sdk').MosaikitExtension} */
+const extension = {
   activate(context) {
     if (customElements.get('mk-sample-hello')) {
       return;
@@ -34,7 +34,7 @@ const plugin = {
             <p role="status" aria-live="polite"></p>
           </section>`;
         const [intro, status] = root.querySelectorAll('p');
-        intro.textContent = `Signed in as ${context.user.displayName}. Plugin ${context.plugin.id} ${context.plugin.version}.`;
+        intro.textContent = `Signed in as ${context.user.displayName}. Extension ${context.extension.id} ${context.extension.version}.`;
         root.querySelector('button').addEventListener('click', () => {
           context.events.publish(TOPIC, { at: new Date().toISOString() });
         });
@@ -52,4 +52,4 @@ const plugin = {
   },
 };
 
-export default plugin;
+export default extension;

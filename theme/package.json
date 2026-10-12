@@ -2,7 +2,7 @@
   "name": "sample-theme",
   "version": "0.1.0",
   "private": true,
-  "description": "A theme plugin: the Green theme, offered in the settings of each person.",
+  "description": "A theme extension: the Green theme, offered in the settings of each person.",
   "license": "MPL-2.0",
   "author": "Massimo Antonini",
   "type": "module",

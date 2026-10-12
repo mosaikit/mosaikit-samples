@@ -1,8 +1,8 @@
 -- SPDX-FileCopyrightText: 2026 Massimo Antonini
 -- SPDX-License-Identifier: MPL-2.0
 --
--- Schema p_sample_activities, owned by the plugin (MK-020). The table is private to the plugin;
--- other plugins read the view activity_v1, its published data contract.
+-- Schema ext_sample_activities, owned by the extension (MK-020). The table is private to the extension;
+-- other extensions read the view activity_v1, its published data contract.
 
 create table activity (
     id              uuid primary key,

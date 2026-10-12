@@ -21,10 +21,10 @@ import java.util.List;
 import java.util.UUID;
 
 /**
- * Notes of the sample plugin. Plugin APIs live under {@code /api/v1/p/<plugin>}; every request acts
+ * Notes of the sample extension. Extension APIs live under {@code /api/v1/ext/<plugin>}; every request acts
  * on one organization, whose notes only it reads and writes (MK-017).
  */
-@Path("/api/v1/p/sample-notes/notes")
+@Path("/api/v1/ext/sample-notes/notes")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 @Authenticated

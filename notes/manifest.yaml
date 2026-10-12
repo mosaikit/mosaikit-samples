@@ -1,7 +1,7 @@
 id: dev.mosaikit.sample.notes
 version: 0.1.0
 name: Notes (sample)
-description: Sample Java plugin with a REST endpoint, an entity, a database migration and an app.
+description: Sample Java extension with a REST endpoint, an entity, a database migration and an app.
 kind: [app, service]
 platform: '>=0.1 <1'
 backend:
@@ -34,7 +34,7 @@ actions:
       method: POST
       path: notes
 database:
-  schema: p_sample_notes
+  schema: ext_sample_notes
 frontend:
   entry: web/index.js
   isolation: module

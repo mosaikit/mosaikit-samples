@@ -2,14 +2,14 @@
 // SPDX-License-Identifier: MPL-2.0
 
 /**
- * Frontend of the sample Java plugin: lists and creates notes through the plugin API
- * (/api/v1/p/sample-notes/notes), with the credentials of the signed-in person.
+ * Frontend of the sample Java extension: lists and creates notes through the extension API
+ * (/api/v1/ext/sample-notes/notes), with the credentials of the signed-in person.
  */
 
-const API = '/api/v1/p/sample-notes/notes';
+const API = '/api/v1/ext/sample-notes/notes';
 
-/** @type {import('@mosaikit/sdk').MosaikitPlugin} */
-const plugin = {
+/** @type {import('@mosaikit/sdk').MosaikitExtension} */
+const extension = {
   activate(context) {
     if (customElements.get('mk-sample-notes')) {
       return;
@@ -104,4 +104,4 @@ const plugin = {
   },
 };
 
-export default plugin;
+export default extension;

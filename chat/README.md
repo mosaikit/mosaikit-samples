@@ -5,7 +5,7 @@ SPDX-License-Identifier: MPL-2.0
 # Chat
 
 The app Chat (MK-036): chats one to one and in groups, with their history, the indicators of
-typing and reading, and the cards that plugins publish. A plugin without a backend
+typing and reading, and the cards that extensions publish. An extension without a backend
 ([ADR-0033](https://github.com/mosaikit/mosaikit/blob/main/docs/adr/0033-lean-collaboration.md)):
 
 - a chat is a group of the kernel of kind `chat` (`POST /api/v1/teams` with `kind: chat` and
@@ -18,7 +18,7 @@ typing and reading, and the cards that plugins publish. A plugin without a backe
 
 ## Cards
 
-Another plugin publishes a card by adding a message to the chat, as the person whose page runs it:
+Another extension publishes a card by adding a message to the chat, as the person whose page runs it:
 
 ```js
 await context.fetch(`/api/v1/data/dev.mosaikit.app.chat/messages?team=${chat}`, {
@@ -31,7 +31,7 @@ await context.fetch(`/api/v1/data/dev.mosaikit.app.chat/messages?team=${chat}`, 
       fields: [{ label: 'When', value: 'Monday at 9' }],
       actions: [
         { label: 'Open', link: '/app/activities' },
-        { label: 'I take it', request: { method: 'POST', path: '/api/v1/p/…', body: { … } } },
+        { label: 'I take it', request: { method: 'POST', path: '/api/v1/ext/…', body: { … } } },
       ],
     },
   }),
@@ -41,18 +41,18 @@ await context.fetch(`/api/v1/data/dev.mosaikit.app.chat/messages?team=${chat}`, 
 An action runs in the page of the person who chooses it, with their rights: a `link` opens a page
 of the shell, a `request` calls the API of the kernel (`/api/v1/…`) as them.
 
-Nothing to build: installed from the Plugins page, it is active at once. Its tests are in `tests/`.
+Nothing to build: installed from the Extensions page, it is active at once. Its tests are in `tests/`.
 
 ## Build and test
 
 A project of its own: Java 25, Maven and Node.js 24, nothing else. Its POM names the parent of
-Mosaikit plugins, `io.github.mosaikit:mosaikit-plugin-parent`.
+Mosaikit extensions, `io.github.mosaikit:mosaikit-extension-parent`.
 
 ```bash
 mvn package    # target/<name>-<version>.zip, the package to install
 mvn verify     # also the tests of tests/, on a Mosaikit installation started for them
 npm test       # the same tests, after mvn package
-npm run dev    # Mosaikit with this plugin, until Ctrl+C
+npm run dev    # Mosaikit with this extension, until Ctrl+C
 ```
 
 The tests also install the sample `todo`: build it first (`cd ../todo && mvn package`).

@@ -13,7 +13,7 @@ import java.util.UUID;
 
 /** How many hours an activity should take: the field that the extension adds to activities. */
 @Entity
-@Table(name = "estimate", schema = "p_sample_estimates")
+@Table(name = "estimate", schema = "ext_sample_estimates")
 public class Estimate {
 
     @Id

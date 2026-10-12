@@ -19,13 +19,13 @@ export default async function globalSetup(): Promise<() => Promise<void>> {
   const bench = await Bench.start({
     work: '.mosaikit-bench',
     port: 18202,
-    plugins: todo,
+    extensions: todo,
     catalog: own,
     admin: ADMIN,
     organization: ORGANIZATION,
     people: [MARIO, ANNA],
     // The packages are not signed by a publisher: their frontends run like verified ones.
-    settings: { 'mosaikit.plugins.unverified-frontends': 'module' },
+    settings: { 'mosaikit.extensions.unverified-frontends': 'module' },
   });
   bench.publish();
   return () => bench.stop();

@@ -2,7 +2,7 @@
   "name": "app-teams",
   "version": "0.1.0",
   "private": true,
-  "description": "Teams with channels, posts, threads, mentions, reactions and tabs of plugins, without a backend.",
+  "description": "Teams with channels, posts, threads, mentions, reactions and tabs of extensions, without a backend.",
   "license": "MPL-2.0",
   "author": "Massimo Antonini",
   "type": "module",

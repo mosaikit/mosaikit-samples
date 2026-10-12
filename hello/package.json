@@ -2,7 +2,7 @@
   "name": "sample-hello",
   "version": "0.1.0",
   "private": true,
-  "description": "The smallest app: a manifest and an ES module, the context of the plugin and the event bus.",
+  "description": "The smallest app: a manifest and an ES module, the context of the extension and the event bus.",
   "license": "MPL-2.0",
   "author": "Massimo Antonini",
   "type": "module",

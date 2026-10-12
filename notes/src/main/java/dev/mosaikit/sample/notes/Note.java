@@ -10,9 +10,9 @@ import java.time.Instant;
 import java.util.Objects;
 import java.util.UUID;
 
-/** A note of an organization, stored in the schema owned by the plugin. */
+/** A note of an organization, stored in the schema owned by the extension. */
 @Entity
-@Table(name = "note", schema = "p_sample_notes")
+@Table(name = "note", schema = "ext_sample_notes")
 public class Note {
 
     @Id

@@ -25,7 +25,7 @@ import java.util.UUID;
 import java.util.stream.Collectors;
 
 /** Estimates of the activities of the organization of the request (MK-020). */
-@Path("/api/v1/p/sample-estimates/estimates")
+@Path("/api/v1/ext/sample-estimates/estimates")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 @Authenticated

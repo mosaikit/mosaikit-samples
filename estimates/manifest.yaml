@@ -12,7 +12,7 @@ backend:
   jar: lib/sample-estimates.jar
   api: sample-estimates
 database:
-  schema: p_sample_estimates
+  schema: ext_sample_estimates
 frontend:
   entry: web/index.js
   isolation: module

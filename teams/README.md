@@ -5,7 +5,7 @@ SPDX-License-Identifier: MPL-2.0
 # Teams
 
 The app Teams (MK-034): the teams of the person, their channels, and the posts of each channel
-with threads, mentions and reactions. A plugin without a backend
+with threads, mentions and reactions. An extension without a backend
 ([ADR-0033](https://github.com/mosaikit/mosaikit/blob/main/docs/adr/0033-lean-collaboration.md)):
 
 - the teams and their people are those of the kernel (`/api/v1/teams`, MK-032);
@@ -18,22 +18,22 @@ with threads, mentions and reactions. A plugin without a backend
   feed, with a link that opens the channel.
 
 Every channel has the tabs **Posts** and **Files**, and the tabs its people add from what other
-plugins contribute to the point `channel.tab` (MK-035), such as the sample To do. A tab whose
-plugin is not installed or is turned off for the organization is shown as unavailable, and can be
+extensions contribute to the point `channel.tab` (MK-035), such as the sample To do. A tab whose
+extension is not installed or is turned off for the organization is shown as unavailable, and can be
 removed.
 
-Nothing to build: installed from the Plugins page, it is active at once. Its tests are in `tests/`.
+Nothing to build: installed from the Extensions page, it is active at once. Its tests are in `tests/`.
 
 ## Build and test
 
 A project of its own: Java 25, Maven and Node.js 24, nothing else. Its POM names the parent of
-Mosaikit plugins, `io.github.mosaikit:mosaikit-plugin-parent`.
+Mosaikit extensions, `io.github.mosaikit:mosaikit-extension-parent`.
 
 ```bash
 mvn package    # target/<name>-<version>.zip, the package to install
 mvn verify     # also the tests of tests/, on a Mosaikit installation started for them
 npm test       # the same tests, after mvn package
-npm run dev    # Mosaikit with this plugin, until Ctrl+C
+npm run dev    # Mosaikit with this extension, until Ctrl+C
 ```
 
 The tests also install the sample `todo`: build it first (`cd ../todo && mvn package`).

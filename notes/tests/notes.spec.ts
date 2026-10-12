@@ -11,8 +11,8 @@ test('a note written in the app is kept by the Java backend for the organization
   await page.getByRole('button', { name: 'Add' }).click();
   await expect(page.getByText(text)).toBeVisible();
 
-  // A colleague of the same organization reads it through the API of the plugin.
-  const { status, body } = await api(member(1), '/api/v1/p/sample-notes/notes');
+  // A colleague of the same organization reads it through the API of the extension.
+  const { status, body } = await api(member(1), '/api/v1/ext/sample-notes/notes');
   expect(status).toBe(200);
   expect(JSON.stringify(body)).toContain(text);
 });

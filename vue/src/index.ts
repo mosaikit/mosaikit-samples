@@ -1,6 +1,6 @@
 // SPDX-FileCopyrightText: 2026 Massimo Antonini
 // SPDX-License-Identifier: MPL-2.0
-import { definePlugin } from '@mosaikit/sdk';
+import { defineExtension } from '@mosaikit/sdk';
 import { createApp, defineComponent, h, onUnmounted, ref, type App } from 'vue';
 
 /** The topic on which the React palette publishes the picked colour. */
@@ -11,7 +11,7 @@ interface Colour {
   readonly value: string;
 }
 
-/** Whether a payload of the bus is a colour, since any plugin may publish on the topic. */
+/** Whether a payload of the bus is a colour, since any extension may publish on the topic. */
 export function isColour(payload: unknown): payload is Colour {
   if (typeof payload !== 'object' || payload === null) {
     return false;
@@ -27,7 +27,7 @@ const STYLE = `
   small { color: var(--mk-muted); }
 `;
 
-export default definePlugin({
+export default defineExtension({
   activate(context) {
     if (customElements.get('mk-sample-swatch')) {
       return;

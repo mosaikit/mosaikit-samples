@@ -3,15 +3,15 @@
 
 /**
  * Frontend of the Estimates extension (MK-020): the widget "mk-activity-estimate", which the
- * Activities app shows with each activity because this plugin contributes it to the
+ * Activities app shows with each activity because this extension contributes it to the
  * "activities.detail" point. It publishes "estimates.changed" and listens to
  * "activities.completed".
  */
 
-const API = '/api/v1/p/sample-estimates/estimates';
+const API = '/api/v1/ext/sample-estimates/estimates';
 
-/** @type {import('@mosaikit/sdk').MosaikitPlugin} */
-const plugin = {
+/** @type {import('@mosaikit/sdk').MosaikitExtension} */
+const extension = {
   activate(context) {
     if (customElements.get('mk-activity-estimate')) {
       return;
@@ -93,4 +93,4 @@ const plugin = {
   },
 };
 
-export default plugin;
+export default extension;

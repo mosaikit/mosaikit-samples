@@ -21,7 +21,7 @@ async function rendered(page: Page): Promise<{ react: string; vue: string; subti
   });
 }
 
-test.describe('Plugin frontends written with any framework (MK-021)', () => {
+test.describe('Extension frontends written with any framework (MK-021)', () => {
   test('21.1–21.2 a Vue widget inside a React app receives its selection on the bus', async ({
     page,
   }) => {

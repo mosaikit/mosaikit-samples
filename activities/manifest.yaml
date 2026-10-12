@@ -3,18 +3,18 @@ version: 0.1.0
 name: Activities (sample)
 description: >-
   Sample app of the prototype: activities of an organization, with a data contract, an extension
-  point for widgets of other plugins and actions for assistants (MK-020).
+  point for widgets of other extensions and actions for assistants (MK-020).
 kind: [app, service]
 platform: '>=0.1 <1'
 backend:
   jar: lib/sample-activities.jar
   api: sample-activities
 database:
-  schema: p_sample_activities
+  schema: ext_sample_activities
 frontend:
   entry: web/index.js
   isolation: module
-  # Other plugins contribute widgets shown with each activity; attribute "element" names the
+  # Other extensions contribute widgets shown with each activity; attribute "element" names the
   # custom element, which receives the activity in its "activity-id" attribute.
   points: [activities.detail]
   bridge:

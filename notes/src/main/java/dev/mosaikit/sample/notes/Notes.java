@@ -8,7 +8,7 @@ import jakarta.data.repository.Repository;
 import java.util.List;
 import java.util.UUID;
 
-/** Jakarta Data repository of notes; the implementation is generated when the plugin is built. */
+/** Jakarta Data repository of notes; the implementation is generated when the extension is built. */
 @Repository
 public interface Notes {
 

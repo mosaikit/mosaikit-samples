@@ -13,8 +13,8 @@ test('an activity added in the app is kept for the organization, behind row-leve
   await page.getByRole('button', { name: 'Add' }).click();
   await expect(page.locator('li').filter({ hasText: title })).toBeVisible();
 
-  // A colleague of the same organization reads it through the API of the plugin.
-  const { status, body } = await api(member(1), '/api/v1/p/sample-activities/activities');
+  // A colleague of the same organization reads it through the API of the extension.
+  const { status, body } = await api(member(1), '/api/v1/ext/sample-activities/activities');
   expect(status).toBe(200);
   expect(JSON.stringify(body)).toContain(title);
 });

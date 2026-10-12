@@ -2,13 +2,13 @@
 // SPDX-License-Identifier: MPL-2.0
 
 /**
- * Chat (MK-036): chats one to one and in groups. A plugin without a backend (ADR-0033): a chat is
+ * Chat (MK-036): chats one to one and in groups. An extension without a backend (ADR-0033): a chat is
  * a group of the kernel of kind `chat`, seen only by its people, and its messages are documents of
  * the data API shared with it, kept as history and read by its people only. Messages, and where
  * each person is (what they read, whether they are typing), arrive at once through the real-time
  * channel (MK-031).
  *
- * A message can carry a card, which other plugins publish by adding a message to the collection
+ * A message can carry a card, which other extensions publish by adding a message to the collection
  * `messages` of the chat: `{ text, card: { title, text?, fields?: [{ label, value }], actions?:
  * [{ label, link } | { label, request: { method, path, body? } }] } }`. An action runs in the page of
  * the person who chooses it, with their rights: a link opens a page of the shell, a request calls
@@ -58,8 +58,8 @@ const STYLE = `
   :focus-visible { outline: 2px solid var(--mk-focus); outline-offset: 2px; }
 `;
 
-/** @type {import('@mosaikit/sdk').MosaikitPlugin} */
-const plugin = {
+/** @type {import('@mosaikit/sdk').MosaikitExtension} */
+const extension = {
   activate(context) {
     if (customElements.get('mk-app-chat')) {
       return;
@@ -615,4 +615,4 @@ const plugin = {
   },
 };
 
-export default plugin;
+export default extension;

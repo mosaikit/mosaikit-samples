@@ -3,15 +3,15 @@
 
 /**
  * Frontend of the Activities sample (MK-020): lists and creates activities, shows with each one the
- * widgets that other plugins contribute to the "activities.detail" extension point, publishes
+ * widgets that other extensions contribute to the "activities.detail" extension point, publishes
  * "activities.completed" and listens to "estimates.changed" to show the estimated total.
  */
 
-const API = '/api/v1/p/sample-activities/activities';
+const API = '/api/v1/ext/sample-activities/activities';
 const POINT = 'activities.detail';
 
-/** @type {import('@mosaikit/sdk').MosaikitPlugin} */
-const plugin = {
+/** @type {import('@mosaikit/sdk').MosaikitExtension} */
+const extension = {
   activate(context) {
     if (customElements.get('mk-sample-activities')) {
       return;
@@ -161,4 +161,4 @@ const plugin = {
   },
 };
 
-export default plugin;
+export default extension;

@@ -9,7 +9,7 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>io.github.mosaikit</groupId>
-        <artifactId>mosaikit-plugin-parent</artifactId>
+        <artifactId>mosaikit-extension-parent</artifactId>
         <version>0.1.0-SNAPSHOT</version>
         <relativePath/>
     </parent>
@@ -18,5 +18,5 @@
     <version>0.1.0</version>
     <packaging>pom</packaging>
     <name>Hello (sample)</name>
-    <description>The smallest app: a manifest and an ES module, the context of the plugin and the event bus.</description>
+    <description>The smallest app: a manifest and an ES module, the context of the extension and the event bus.</description>
 </project>
